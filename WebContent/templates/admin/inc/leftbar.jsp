@@ -4,9 +4,9 @@
 	<div class="sidebar-collapse">
 		<ul class="nav" id="main-menu">
 			<li class="text-center"><img
-				src="<%=request.getContextPath()%>/templates/admin/assets/img/find_user.png"
+				src="${pageContext.request.contextPath }/templates/admin/assets/img/find_user.png"
 				class="user-image img-responsive" /></li>
-			<li><a id="index" href="<%=request.getContextPath()%>/admin/sinhvien/index"><i
+			<li><a id="index" href="${pageContext.request.contextPath }/v1/admin/sinhvien/index"><i
 					class="fa fa-dashboard fa-3x"></i> Danh sách sinh viên</a></li>
 		</ul>
 	</div>

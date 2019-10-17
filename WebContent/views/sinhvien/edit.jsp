@@ -11,7 +11,7 @@
 		var cmnd = $('#cmnd').val();
 		var khoa = $('#khoa').val();
 		$.ajax({
-			url : "${pageContext.request.contextPath }/api/sinhvien",
+			url : "${pageContext.request.contextPath }/v1/api/sinhvien",
 			type : 'PUT',
 			contentType : 'application/json',
 			data : JSON.stringify({
@@ -23,7 +23,7 @@
 				khoa : khoa
 				}),
 				success: function(data){
-					window.location="${pageContext.request.contextPath }/admin/sinhvien/index";
+					window.location="${pageContext.request.contextPath }/v1/admin/sinhvien/index";
 				},
 		});
 	}

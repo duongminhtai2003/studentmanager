@@ -5,13 +5,13 @@
 <html>
   <head>
     <title>VNE Login</title>
-    <link rel="shortcut icon" type="image/ico" href="<%=request.getContextPath()%>/templates/auth/images/icon-180x180.png" />
+    <link rel="shortcut icon" type="image/ico" href="${pageContext.request.contextPath }/templates/auth/images/icon-180x180.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="<%=request.getContextPath()%>/templates/auth/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/templates/auth/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-    <link href="<%=request.getContextPath()%>/templates/auth/css/style1.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/templates/auth/css/style1.css" rel="stylesheet">
   </head>
   <body>
   	<div class="header">
@@ -44,9 +44,9 @@
 			<div class="col-md-4 col-md-offset-4">
 				<div class="login-wrapper">
 			        <div class="box">
-			        <form action="<%=request.getContextPath()%>/auth/login" method="POST">
+			        <form action="${pageContext.request.contextPath }/v1/auth/login" method="POST">
 			            <div class="content-wrap">
-			            	<img width="100px" height="100px" class="img-circle" src="<%=request.getContextPath()%>/templates/auth/images/icon-180x180.png">
+			            	<img width="100px" height="100px" class="img-circle" src="${pageContext.request.contextPath }/templates/auth/images/icon-180x180.png">
 			                <h6>Đăng nhập</h6>
 			                
 			                <c:if test="${not empty msg}">
@@ -79,7 +79,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="<%=request.getContextPath()%>/templates/auth/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath()%>/templates/auth/js/custom.js"></script>
+    <script src="${pageContext.request.contextPath }/templates/auth/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/templates/auth/js/custom.js"></script>
   </body>
 </html>

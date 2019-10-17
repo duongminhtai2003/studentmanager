@@ -37,10 +37,10 @@ public class LoginController extends HttpServlet {
 		User userinfo = userDAO.getItemByUsernameAndPassword(objUser);
 		if(userinfo != null) {
 			session.setAttribute("userinfo", userinfo);
-			response.sendRedirect(request.getContextPath()+"/admin/sinhvien/index");
+			response.sendRedirect(request.getContextPath()+"/v1/admin/sinhvien/index");
 			return;
 		}else {
-			response.sendRedirect(request.getContextPath()+"/auth/login?msg=Error");
+			response.sendRedirect(request.getContextPath()+"/v1/auth/login?msg=Error");
 			return;
 		}
 		

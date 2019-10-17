@@ -20,7 +20,7 @@ public class LogoutController extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.removeAttribute("userinfo");
-		response.sendRedirect(request.getContextPath() + "/auth/login");
+		response.sendRedirect(request.getContextPath() + "/v1/auth/login");
 		return;
 	}
 

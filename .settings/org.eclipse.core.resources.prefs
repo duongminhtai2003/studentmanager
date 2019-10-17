@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
 encoding//WebContent/views/auth/login.jsp=UTF-8
-encoding//src/com/duongminhtai/api/sinhvien/SinhVienAPI.java=UTF-8
+encoding//src/com/duongminhtai/controller/api/SinhVienAPI.java=UTF-8
 encoding//src/com/duongminhtai/model/dao/SinhVienDAO.java=UTF-8

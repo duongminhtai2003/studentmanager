@@ -28,7 +28,7 @@ public class LoginFilter implements Filter {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		if (!AuthUtil.checkLogin(req, res)) {
-			res.sendRedirect(req.getContextPath() + "/auth/login");
+			res.sendRedirect(req.getContextPath() + "/v1/auth/login");
 			return;
 		}
 		chain.doFilter(request, response);

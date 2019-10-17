@@ -6,14 +6,14 @@
 function del(id) {
 	alert('bạn có muốn thực hiện');
 	$.ajax({
-			url : "${pageContext.request.contextPath }/api/sinhvien",
+			url : "${pageContext.request.contextPath }/v1/api/sinhvien",
 			type : 'DELETE',
 			contentType : 'application/json',
 			data : JSON.stringify({
 				id : id
 				}),
 			success: function(data){
-				window.location="${pageContext.request.contextPath }/admin/sinhvien/index";
+				window.location="${pageContext.request.contextPath }/v1/admin/sinhvien/index";
 	      		},
 		});
 	}
@@ -35,13 +35,13 @@ function del(id) {
 						<div class="table-responsive">
 							<div class="row" style="margin-bottom: 30px;">
 								<div class="col-sm-8">
-									<a href="${pageContext.request.contextPath}/admin/sinhvien/add"
+									<a href="${pageContext.request.contextPath}/v1/admin/sinhvien/add"
 										class="btn btn-success btn-md" id=""> <i
 										class="fa fa-plus"></i>&nbsp;Thêm
 									</a>
 								</div>
 								<div class="col-md-4">
-									<form action="<%=request.getContextPath()%>/admin/sinhvien/index"
+									<form action="${pageContext.request.contextPath }/v1/admin/sinhvien/index"
 										method="get">
 										<div class="input-group form">
 											<input type="text" class="form-control"
@@ -78,7 +78,7 @@ function del(id) {
 											<td>${sinhVien.ngaysinh }</td>
 											<td>${sinhVien.cmnd }</td>
 											<td class="center" align="center"><a
-												href="${pageContext.request.contextPath }/admin/sinhvien/edit?id=${sinhVien.id}"
+												href="${pageContext.request.contextPath }/v1/admin/sinhvien/edit?id=${sinhVien.id}"
 												title="" class="btn btn-primary"><i class="fa fa-edit "></i>Sửa</a>
 												<a href="javascript:void(0)" title="" class="btn btn-danger"
 												onclick="return del(${sinhVien.id })"><i

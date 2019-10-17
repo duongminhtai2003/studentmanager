@@ -1,4 +1,4 @@
-package com.duongminhtai.api.sinhvien;
+package com.duongminhtai.controller.api;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,14 +27,14 @@ public class SinhVienAPI extends HttpServlet {
 		response.setContentType("application/json");
 		BufferedReader reader = request.getReader();
 		SinhVien sinhVien = gson.fromJson(reader, SinhVien.class);
-		int check = sinhVienDAO.addItem(sinhVien);
-		if(check > 0) {
-			response.sendRedirect(request.getContextPath()+"/admin-sinhvien-index");
-			return;
-		}else {
-			response.sendRedirect(request.getContextPath()+"/admin-sinhvien-add");
-			return;
-		}
+		sinhVienDAO.addItem(sinhVien);
+		/*
+		 * if(check > 0) {
+		 * response.sendRedirect(request.getContextPath()+"/v1/admin/sinhvien/index");
+		 * return; }else {
+		 * response.sendRedirect(request.getContextPath()+"/v1/admin/sinhvien/add");
+		 * return; }
+		 */
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
@@ -43,14 +43,14 @@ public class SinhVienAPI extends HttpServlet {
 		response.setContentType("application/json");
 		BufferedReader reader = request.getReader();
 		SinhVien sinhVien = gson.fromJson(reader, SinhVien.class);
-		int check = sinhVienDAO.editItem(sinhVien);
-		if(check > 0) {
-			response.sendRedirect(request.getContextPath()+"/admin-sinhvien-index");
-			return;
-		}else {
-			response.sendRedirect(request.getContextPath()+"/admin-sinhvien-edit?id="+sinhVien.getId());
-			return;
-		}
+		sinhVienDAO.editItem(sinhVien);
+		/*
+		 * if(check > 0) {
+		 * response.sendRedirect(request.getContextPath()+"/v1/admin/sinhvien/index");
+		 * return; }else {
+		 * response.sendRedirect(request.getContextPath()+"/v1/admin/sinhvien/edit?id="+
+		 * sinhVien.getId()); return; }
+		 */
 	}
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
@@ -58,7 +58,6 @@ public class SinhVienAPI extends HttpServlet {
 		BufferedReader reader = request.getReader();
 		SinhVien sinhVien = gson.fromJson(reader, SinhVien.class);
 		sinhVienDAO.delItem(sinhVien.getId());
-		//response.sendRedirect(request.getContextPath()+"/admin-sinhvien-index");
 	}
 
 }
