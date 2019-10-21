@@ -2,35 +2,37 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/templates/admin/inc/header.jsp"%>
 <%@ include file="/templates/admin/inc/leftbar.jsp"%>
-
+<%@ include file="/views/sinhvien/taglib.jsp"%>
 <script type="text/javascript">
 	function add() {
-		var hoten = $('#hoten').val();
-		var quequan = $('#quequan').val();
-		var ngaysinh = $('#ngaysinh').val();
-		var cmnd = $('#cmnd').val();
-		var khoa = $('#khoa').val();
-		$
-				.ajax({
-					url : "${pageContext.request.contextPath }/v1/api/sinhvien",
-					type : 'POST',
-					contentType : 'application/json',
-					data : JSON.stringify({
-						hoten : hoten,
-						quequan : quequan,
-						ngaysinh : ngaysinh,
-						cmnd : cmnd,
-						khoa : khoa
-					}),
-					success : function(data) {
-						window.location = "${pageContext.request.contextPath }/v1/admin/sinhvien/index";
-					},
-				});
+		var check = confirm('bạn có muốn thực hiện không không');
+		if (check) {
+			var hoten = $('#hoten').val();
+			var quequan = $('#quequan').val();
+			var ngaysinh = $('#ngaysinh').val();
+			var cmnd = $('#cmnd').val();
+			var khoa = $('#khoa').val();
+			$.ajax({
+				url : "${api}",
+				type : 'POST',
+				contentType : 'application/json',
+				data : JSON.stringify({
+					hoten : hoten,
+					quequan : quequan,
+					ngaysinh : ngaysinh,
+					cmnd : cmnd,
+					khoa : khoa
+				}),
+				success : function(result) {
+					window.location.href = "${index}?msg=addsuccess";
+				},
+				error : function(error) {
+					window.location.href = "${add}?msg=addfail";
+				}
+			});
+		}
 	}
 </script>
-
-
-
 <div id="page-wrapper">
 	<div id="page-inner">
 		<div class="row">
@@ -40,6 +42,11 @@
 		</div>
 		<!-- /. ROW  -->
 		<hr />
+		<c:if test="${not empty param.msg }">
+			<c:if test="${param.msg eq 'addfail'}">
+				<h3 style="color: blue;">Thêm thất bại</h3>
+			</c:if>
+		</c:if>
 		<div class="row">
 			<div class="col-md-12">
 				<!-- Form Elements -->
@@ -47,7 +54,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-12">
-								<form onsubmit="add()" id="myform">
+								<form action="javascript:void(0)" onsubmit="add()" id="myform">
 									<div class="form-group">
 										<label for="hoten">Họ tên</label> <input type="text"
 											id="hoten" name="hoten" class="form-control"

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,13 +29,7 @@ public class SinhVienAPI extends HttpServlet {
 		BufferedReader reader = request.getReader();
 		SinhVien sinhVien = gson.fromJson(reader, SinhVien.class);
 		sinhVienDAO.addItem(sinhVien);
-		/*
-		 * if(check > 0) {
-		 * response.sendRedirect(request.getContextPath()+"/v1/admin/sinhvien/index");
-		 * return; }else {
-		 * response.sendRedirect(request.getContextPath()+"/v1/admin/sinhvien/add");
-		 * return; }
-		 */
+		response.getWriter().print(gson.toJson(sinhVien));
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
@@ -44,13 +39,7 @@ public class SinhVienAPI extends HttpServlet {
 		BufferedReader reader = request.getReader();
 		SinhVien sinhVien = gson.fromJson(reader, SinhVien.class);
 		sinhVienDAO.editItem(sinhVien);
-		/*
-		 * if(check > 0) {
-		 * response.sendRedirect(request.getContextPath()+"/v1/admin/sinhvien/index");
-		 * return; }else {
-		 * response.sendRedirect(request.getContextPath()+"/v1/admin/sinhvien/edit?id="+
-		 * sinhVien.getId()); return; }
-		 */
+		response.getWriter().print(gson.toJson(sinhVien));
 	}
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response)

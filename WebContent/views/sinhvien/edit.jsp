@@ -2,30 +2,37 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/templates/admin/inc/header.jsp"%>
 <%@ include file="/templates/admin/inc/leftbar.jsp"%>
+<%@ include file="/views/sinhvien/taglib.jsp"%>
 <script type="text/javascript">
 	function edit() {
-		var id = $('#id').val();
-		var hoten = $('#hoten').val();
-		var quequan = $('#quequan').val();
-		var ngaysinh = $('#ngaysinh').val();
-		var cmnd = $('#cmnd').val();
-		var khoa = $('#khoa').val();
-		$.ajax({
-			url : "${pageContext.request.contextPath }/v1/api/sinhvien",
-			type : 'PUT',
-			contentType : 'application/json',
-			data : JSON.stringify({
-				id : id,
-				hoten : hoten,
-				quequan : quequan,
-				ngaysinh : ngaysinh,
-				cmnd : cmnd,
-				khoa : khoa
+		var check = confirm('bạn có muốn thực hiện không không');
+		if (check) {
+			var id = $('#id').val();
+			var hoten = $('#hoten').val();
+			var quequan = $('#quequan').val();
+			var ngaysinh = $('#ngaysinh').val();
+			var cmnd = $('#cmnd').val();
+			var khoa = $('#khoa').val();
+			$.ajax({
+				url : "${api}",
+				type : 'PUT',
+				contentType : 'application/json',
+				data : JSON.stringify({
+					id : id,
+					hoten : hoten,
+					quequan : quequan,
+					ngaysinh : ngaysinh,
+					cmnd : cmnd,
+					khoa : khoa
 				}),
-				success: function(data){
-					window.location="${pageContext.request.contextPath }/v1/admin/sinhvien/index";
+				success : function(result) {
+					window.location.href = "${index}?msg=editsuccess";
 				},
-		});
+				error : function(error) {
+					window.location.href = "${edit}?msg=editfail&id=" + id;
+				}
+			});
+		}
 	}
 </script>
 <div id="page-wrapper">
@@ -37,6 +44,11 @@
 		</div>
 		<!-- /. ROW  -->
 		<hr />
+		<c:if test="${not empty param.msg }">
+			<c:if test="${param.msg eq 'editfail'}">
+				<h3 style="color: blue;">Sửa thất bại</h3>
+			</c:if>
+		</c:if>
 		<div class="row">
 			<div class="col-md-12">
 				<!-- Form Elements -->
@@ -44,7 +56,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-12">
-								<form onsubmit="edit()">
+								<form action="javascript:void(0)" onsubmit="edit()">
 									<div class="form-group">
 										<label for="id">ID</label> <input type="text" id="id"
 											name="id" value="${sinhVien.id }" class="form-control"
@@ -58,21 +70,23 @@
 									<div class="form-group">
 										<label for="quequan">Quê quán</label> <input type="text"
 											id="quequan" name="quequan" value="${sinhVien.quequan }"
-											class="form-control" required="required"/>
+											class="form-control" required="required" />
 									</div>
 									<div class="form-group">
 										<label for="khoa">Khoa</label> <input type="text" id="khoa"
-											name="khoa" value="${sinhVien.khoa }" class="form-control" required="required"/>
+											name="khoa" value="${sinhVien.khoa }" class="form-control"
+											required="required" />
 									</div>
 
 									<div class="form-group">
 										<label for="ngaysinh">Ngày sinh</label> <input type="date"
-											id="ngaysinh" name="ngaysinh" value="${sinhVien.ngaysinh }" required="required"/>
+											id="ngaysinh" name="ngaysinh" value="${sinhVien.ngaysinh }"
+											required="required" />
 									</div>
 									<div class="form-group">
 										<label for="cmnd">Số chứng minh nhân dân</label> <input
 											type="text" id="cmnd" name="cmnd" value="${sinhVien.cmnd }"
-											class="form-control" required="required"/>
+											class="form-control" required="required" />
 									</div>
 
 									<button type="submit" class="btn btn-success btn-md">Sửa</button>

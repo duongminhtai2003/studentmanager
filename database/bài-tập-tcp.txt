@@ -1,0 +1,13 @@
+bài tập tcp
+
+1, viet chuong trinh client-server de lay về ngày tháng nam theo ICT;
+2, mô phỏng chương trình chat;
+3, client nhap chuoi len server. server xu ly tra ve
+	chuoi hoa;
+	chuoi thuong;
+	chuoi vua hoa, vua thuong,
+	so tu co trong chuoi
+	các nguyen am
+4, client nhap 2 so a,b va phep toan (+,-,*,/) gui den server. server tinh toan va tra ket qua ve cho client
+5, viet chuong trinh client lien tuc gửi toi server 1 so nguyen duong m, server kiem tra neu thuoc day fibolaxy thi yeu cau client ngừng gửi.(chi rõ phan tu thu may cua day fibo)
+6, chuyen cac bai tu 1-5 sang su dung thread
